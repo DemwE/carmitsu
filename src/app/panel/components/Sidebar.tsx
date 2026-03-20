@@ -46,7 +46,7 @@ export default function Sidebar() {
       <div className="p-4 border-b border-slate-700/50">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-primary-500 flex items-center justify-center">
-            <ImageIcon className="w-5 h-5 text-white" />
+            <h1 className="font-bold text-white text-5xl truncate">C</h1>
           </div>
           {!collapsed && (
             <div className="overflow-hidden">
