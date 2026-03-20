@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { UnauthorizedError, ForbiddenError } from './errors';
 import { logger } from './logger';
 
-const ADMIN_TOKEN = process.env.ADMIN_PANEL_TOKEN;
+const ADMIN_TOKEN = process.env.NEXT_PUBLIC_ADMIN_PANEL_TOKEN;
 
 if (!ADMIN_TOKEN) {
-  logger.warn('ADMIN_PANEL_TOKEN nie jest ustawiony w zmiennych środowiskowych');
+  logger.warn('NEXT_PUBLIC_ADMIN_PANEL_TOKEN nie jest ustawiony w zmiennych środowiskowych');
 }
 
 export function getTokenFromRequest(request: NextRequest): string | null {

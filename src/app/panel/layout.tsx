@@ -20,7 +20,10 @@ export default function PanelLayout({
     }
 
     const token = sessionStorage.getItem('panel_token');
-    if (!token) {
+    const adminToken = process.env.NEXT_PUBLIC_ADMIN_PANEL_TOKEN;
+
+    if (!token || token !== adminToken) {
+      sessionStorage.removeItem('panel_token');
       router.push('/panel');
       return;
     }
