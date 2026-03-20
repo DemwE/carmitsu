@@ -4,6 +4,8 @@ import {Providers} from "./providers";
 import {Toaster} from "sonner";
 import React from "react";
 import {getLanguage} from "@/utils/language";
+import Script from "next/script";
+import {headers} from "next/headers";
 const metaLang = await getLanguage();
 
 export const metadata: Metadata = {
@@ -38,6 +40,14 @@ export default function RootLayout({children,}: Readonly<{
 }>) {
   return (
     <html lang="en" className='dark scroll-smooth'>
+      <head>
+        <Script
+          id="cloudflare-analytics"
+          strategy="afterInteractive"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({token: process.env.ANALYTICS || ""})}
+        />
+      </head>
       <body>
       <Providers>
         {children}
