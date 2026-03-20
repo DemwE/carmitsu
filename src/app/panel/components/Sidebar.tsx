@@ -3,16 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  ImageIcon, 
   FolderOpen, 
   LogOut, 
   ChevronLeft, 
   ChevronRight,
   LayoutDashboard
 } from "lucide-react";
-import { Button, Tooltip } from "@nextui-org/react";
-import { useState, useEffect } from "react";
-import { getPanelToken } from "@/lib/auth";
+import { Tooltip } from "@nextui-org/react";
+import { useState } from "react";
 
 const navItems = [
   { href: "/panel/realizations", label: "Realizacje", icon: LayoutDashboard },
@@ -22,18 +20,6 @@ const navItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
-  const [token, setToken] = useState('');
-
-  useEffect(() => {
-    setToken(getPanelToken());
-  }, []);
-
-  const getHref = (href: string) => {
-    if (token) {
-      return `${href}?token=${encodeURIComponent(token)}`;
-    }
-    return href;
-  };
 
   return (
     <aside 
@@ -70,7 +56,7 @@ export default function Sidebar() {
               isDisabled={!collapsed}
             >
               <Link
-                href={getHref(item.href)}
+                href={item.href}
                 className={`
                   flex items-center gap-3 px-3 py-2.5 rounded-xl
                   transition-all duration-200 group
@@ -95,16 +81,18 @@ export default function Sidebar() {
 
       <div className="p-2 border-t border-slate-700/50 space-y-1">
         <Tooltip content="Strona główna" placement="right" isDisabled={!collapsed}>
-          <a
-            href="/"
-            target="_blank"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-xl
+          <button
+            onClick={() => {
+              sessionStorage.removeItem('panel_token');
+              window.location.href = '/';
+            }}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl
               text-slate-400 hover:text-white hover:bg-slate-700/50
               transition-all duration-200"
           >
             <LogOut className="w-5 h-5 flex-shrink-0" />
             {!collapsed && <span className="font-medium">Wyjdź</span>}
-          </a>
+          </button>
         </Tooltip>
         
         <Tooltip content={collapsed ? "Rozwiń" : "Zwiń"} placement="right">
