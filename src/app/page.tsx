@@ -1,4 +1,3 @@
-'use server';
 import Navigation from "@/components/navbar";
 import Hero from "@/components/hero";
 import About from "@/components/about";
@@ -8,6 +7,8 @@ import Footer from "@/components/footer";
 import {getLanguage} from "@/utils/language";
 import {getRealizations} from "@/utils/realizations";
 import Parts from "@/components/parts";
+
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const data = await getLanguage();
@@ -19,7 +20,7 @@ export default async function Home() {
       <Hero hero={data.hero}/>
       <About about={data.about}/>
       <Parts about={data.about}/>
-      <Realizations realizations={data.realizations} realizationsData={realizationsData}/>
+      <Realizations realizations={data.realizations} realizationsData={realizationsData} language={data.language}/>
       <Contact contact={data.contact}/>
       <Footer footer={data.footer}/>
     </main>

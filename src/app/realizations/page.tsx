@@ -4,6 +4,9 @@ import {getLanguage, Lang} from "@/utils/language";
 import {getRealizations} from "@/utils/realizations";
 import AllRealizations from "@/components/realizations/allRealizations";
 import {Metadata} from "next";
+
+export const dynamic = 'force-dynamic';
+
 const metaLang: Lang = await getLanguage();
 
 export const metadata: Metadata = {
@@ -18,7 +21,7 @@ export default async function Page() {
   return (
     <main>
       <Navigation navbar={data.navbar} language={data.language}/>
-      <AllRealizations realizations={data.realizations} realizationsData={realizationsData}/>
+      <AllRealizations realizations={data.realizations} realizationsData={realizationsData} language={data.language}/>
       <Footer footer={data.footer}/>
     </main>
   );
