@@ -4,8 +4,8 @@ import {Providers} from "./providers";
 import {Toaster} from "sonner";
 import React from "react";
 import {getLanguage} from "@/utils/language";
+import {LanguageProvider} from "@/contexts/LanguageContext";
 import Script from "next/script";
-import {headers} from "next/headers";
 const metaLang = await getLanguage();
 
 export const metadata: Metadata = {
@@ -35,9 +35,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children,}: Readonly<{
+export default async function RootLayout({children,}: Readonly<{
   children: React.ReactNode;
 }>) {
+  const data = await getLanguage();
+
   return (
     <html lang="en" className='dark scroll-smooth'>
       <head>
@@ -49,20 +51,22 @@ export default function RootLayout({children,}: Readonly<{
         />
       </head>
       <body>
-      <Providers>
-        {children}
-      </Providers>
-      <Toaster
-        expand={false}
-        position="top-center"
-        toastOptions={{
-          classNames: {
-            success: 'bg-success-400 text-gray-900 border border-0',
-            error: 'bg-danger-400 text-gray-900 border border-0',
-            warning: 'bg-warning-400 text-gray-900 border border-0',
-          },
-        }}
-      />
+        <Providers>
+          <LanguageProvider language={data.language as 'pl' | 'en'} data={data}>
+            {children}
+          </LanguageProvider>
+        </Providers>
+        <Toaster
+          expand={false}
+          position="top-center"
+          toastOptions={{
+            classNames: {
+              success: 'bg-success-400 text-gray-900 border border-0',
+              error: 'bg-danger-400 text-gray-900 border border-0',
+              warning: 'bg-warning-400 text-gray-900 border border-0',
+            },
+          }}
+        />
       </body>
     </html>
   );

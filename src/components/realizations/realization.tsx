@@ -4,14 +4,15 @@ import { useState, useRef, useEffect } from "react";
 import { Skeleton, useDisclosure, Modal, ModalContent, ModalHeader, ModalBody } from "@nextui-org/react";
 import Image from "next/image";
 import { Realization } from "@/utils/realizations";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Play } from "lucide-react";
 
 interface RealizationCardProps {
   realization: Realization;
-  lang: 'pl' | 'en';
 }
 
-export default function RealizationCard({ realization, lang }: RealizationCardProps) {
+export default function RealizationCard({ realization }: RealizationCardProps) {
+  const { language } = useLanguage();
   const [cardFileIndex] = useState(0);
   const [modalFileIndex, setModalFileIndex] = useState(0);
   const [videoThumbnail, setVideoThumbnail] = useState<string | null>(null);
@@ -20,8 +21,8 @@ export default function RealizationCard({ realization, lang }: RealizationCardPr
   
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const title = realization.title?.[lang] || realization.title?.pl || '';
-  const description = realization.description?.[lang] || realization.description?.pl || '';
+  const title = realization.title?.[language] || realization.title?.pl || '';
+  const description = realization.description?.[language] || realization.description?.pl || '';
   
   const allFiles = realization.files || [];
   const cardFile = allFiles[cardFileIndex];
