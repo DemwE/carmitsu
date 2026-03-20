@@ -1,12 +1,5 @@
 'use client';
-import {Skeleton, useDisclosure} from "@nextui-org/react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-} from "@nextui-org/modal";
+import {Skeleton, useDisclosure, Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 
@@ -35,20 +28,16 @@ export default function Realization({image, title, description}: {
       </div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} size={"5xl"} backdrop={"blur"} placement={"center"} scrollBehavior={"outside"}>
         <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
-              <ModalBody>
-                <div className="relative h-[50dvh]">
-                  <Skeleton className="rounded-lg w-full h-full" isLoaded={isRealizationImageModal}>
-                    <Image className="object-cover w-full h-full" src={image} alt="realization" fill={true}
-                           onLoad={() => setRealizationImageModal(true)}/>
-                  </Skeleton>
-                </div>
-                <p className="text-foreground-500">{description}</p>
-              </ModalBody>
-            </>
-          )}
+          <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
+          <ModalBody>
+            <div className="relative h-[50dvh]">
+              <Skeleton className="rounded-lg w-full h-full" isLoaded={isRealizationImageModal}>
+                <Image className="object-cover w-full h-full" src={image} alt="realization" fill={true}
+                       onLoad={() => setRealizationImageModal(true)}/>
+              </Skeleton>
+            </div>
+            <p className="text-foreground-500">{description}</p>
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>

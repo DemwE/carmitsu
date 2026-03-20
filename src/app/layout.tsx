@@ -38,22 +38,22 @@ export default function RootLayout({children,}: Readonly<{
 }>) {
   return (
     <html lang="en" className='dark scroll-smooth'>
-    <body>
-    <Providers>
-      {children}
-    </Providers>
-    </body>
-    <Toaster
-      expand={false}
-      position="top-center"
-      toastOptions={{
-        classNames: {
-          success: 'bg-success-400 text-gray-900 border border-0',
-          error: 'bg-danger-400 text-gray-900 border border-0',
-          warning: 'bg-warning-400 text-gray-900 border border-0',
-        },
-      }}
-    />
+      <body>
+      <Providers>
+        {children}
+      </Providers>
+      <Toaster
+        expand={false}
+        position="top-center"
+        toastOptions={{
+          classNames: {
+            success: 'bg-success-400 text-gray-900 border border-0',
+            error: 'bg-danger-400 text-gray-900 border border-0',
+            warning: 'bg-warning-400 text-gray-900 border border-0',
+          },
+        }}
+      />
+      </body>
     </html>
   );
 }
