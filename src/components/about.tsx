@@ -26,7 +26,7 @@ export default function About() {
           </div>
         </div>
         <Skeleton className="rounded-xl relative" isLoaded={isAboutImage}>
-          <Image src={aboutImage} alt="About Image" fill={true} className="object-center object-cover pointer-events-none"
+          <Image src={aboutImage} alt="About Image" fill={true} className="object-center object-cover pointer-events-none rounded-xl"
                  onLoad={() => setAboutImage(true)}/>
         </Skeleton>
       </div>
@@ -52,7 +52,7 @@ export default function About() {
           <p className="text-foreground-500 px-1 leading-5">{about?.whyUs.footer}</p>
         </div>
         <Skeleton className="rounded-xl relative" isLoaded={isWhyUsImage}>
-          <Image src={whyUsImage} alt="ChooseUs Image" fill={true} className="object-center object-cover pointer-events-none"
+          <Image src={whyUsImage} alt="ChooseUs Image" fill={true} className="object-center object-cover pointer-events-none rounded-xl"
                  onLoad={() => setWhyUsImage(true)}/>
         </Skeleton>
       </div>

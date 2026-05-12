@@ -31,7 +31,7 @@ export default function Parts() {
         </div>
         <Skeleton className="rounded-xl relative" isLoaded={isPartsImage}>
           <Image src={parts} alt="About Image" fill={true}
-                 className="object-center object-cover pointer-events-none"
+                 className="object-center object-cover pointer-events-none rounded-xl"
                  onLoad={() => setPartsImage(true)}/>
         </Skeleton>
       </div>
