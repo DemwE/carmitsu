@@ -19,7 +19,7 @@ export default function Parts() {
           <div className="space-y-3">
             <p className="lg:max-w-[40rem]">{about?.parts.description}</p>
           </div>
-          <Button size="lg" color="primary" variant="flat" className="" href={`tel:${data.contact?.phone?.[1]?.replace(/\s/g, '') || ''}`} as={Link} target="_blank">{about?.parts.button?.[0]} <span className="font-bold">{about?.parts.button?.[1]}</span></Button>
+          <Button size="lg" color="primary" variant="flat" className="w-full md:w-auto" href={`tel:${data.contact?.phone?.[1]?.replace(/\s/g, '') || ''}`} as={Link} target="_blank">{about?.parts.button?.[0]} <span className="font-bold">{about?.parts.button?.[1]}</span></Button>
         </div>
         <Skeleton className="rounded-xl relative" isLoaded={isPartsImage}>
           <Image src={parts} alt="About Image" fill={true}

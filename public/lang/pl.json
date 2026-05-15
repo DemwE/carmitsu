@@ -41,8 +41,17 @@
   },
   "hero": {
     "title": "CarMitsu",
-    "subtitle": "Twoje Auto, Nasza pasją!",
-    "button": "Zobacz więcej"
+    "subtitle": "Twój samochód, nasza pasja!",
+    "description": [
+      "Naprawa wszystkich marek ze specjalizacją w Mitsubishi oraz samochodach japońskich i koreańskich.",
+      [
+        "Szybka diagnostyka",
+        "Uczciwe ceny",
+        "Doświadczenie"
+      ]
+    ],
+    "phone": "+48 692 886 336",
+    "button": "Dowiedz się więcej"
   },
   "about": {
     "about": {
@@ -121,7 +130,7 @@
       "title": "Części samochodowe",
       "description": "Oferujemy szeroki wybór używanych części do samochodów marki Mitsubishi, zapewniając wysoką jakość i niezawodność w atrakcyjnych cenach. Nasz asortyment obejmuje różnorodne komponenty, od układu napędowego po elementy karoserii, aby sprostać wszelkim potrzebom Twojego pojazdu.",
       "button": [
-        "Zadzwoń, aby sprawdzić dostępność:",
+        "Sprawdzić dostępność:",
         "+48 692 886 336"
       ]
     }
