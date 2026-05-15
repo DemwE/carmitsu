@@ -69,18 +69,7 @@ interface About {
   }
   whyUs: {
     "title": string;
-    "experience": {
-      "title": string;
-      "description": string;
-    },
-    "clients": {
-      "title": string;
-      "description": string;
-    },
-    "passion": {
-      "title": string;
-      "description": string;
-    },
+    "description": string[]
     "button": string,
     "footer": string;
   }
@@ -116,6 +105,7 @@ interface About {
   parts: {
     title: string;
     description: string;
+    button: string[];
   }
 }
 
