@@ -6,7 +6,7 @@ import React from "react";
 import {getLanguage} from "@/utils/language";
 import {LanguageProvider} from "@/contexts/LanguageContext";
 import Script from "next/script";
-import {GoogleTagManager} from "@next/third-parties/google";
+import {GoogleTagManager, GoogleAnalytics} from "@next/third-parties/google";
 import Baner from "@/components/baner";
 
 const SITE_ALTERNATES: Record<string, string> = {
@@ -118,7 +118,7 @@ export default async function RootLayout({children,}: Readonly<{
         id="cloudflare-analytics"
         strategy="afterInteractive"
         src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon={JSON.stringify({token: process.env.ANALYTICS || ""})}
+        data-cf-beacon={JSON.stringify({token: process.env.C_ANALYTICS || ""})}
       />
       <script
         type="application/ld+json"
@@ -142,7 +142,7 @@ export default async function RootLayout({children,}: Readonly<{
           `,
         }}
       />
-      <GoogleTagManager gtmId="GTM-M2LLQ24B"/>
+      <GoogleTagManager gtmId={JSON.stringify({token: process.env.GTM || ""})} />
     </head>
     <body>
     <Providers>
@@ -163,6 +163,7 @@ export default async function RootLayout({children,}: Readonly<{
       }}
     />
     </body>
+    <GoogleAnalytics gaId={JSON.stringify({token: process.env.G_ANALYTICSCS || ""})} />
     </html>
   );
 }
