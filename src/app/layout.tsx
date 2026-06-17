@@ -142,7 +142,7 @@ export default async function RootLayout({children,}: Readonly<{
           `,
         }}
        />
-      <GoogleTagManager gtmId={process.env.GTM || ""} />
+      <GoogleTagManager gtmId={process.env.GTM || "GTM-M2LLQ24B"} />
     </head>
     <body>
     <Providers>
@@ -163,7 +163,7 @@ export default async function RootLayout({children,}: Readonly<{
       }}
     />
     </body>
-    <GoogleAnalytics gaId={process.env.G_ANALYTICS || ""} />
+    <GoogleAnalytics gaId={process.env.G_ANALYTICS || "G-32WJY99VMZ"} />
     </html>
   );
 }
