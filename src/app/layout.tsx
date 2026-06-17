@@ -142,6 +142,7 @@ export default async function RootLayout({children,}: Readonly<{
           `,
         }}
        />
+      <GoogleAnalytics gaId={process.env.G_ANALYTICS || "G-32WJY99VMZ"} />
       <GoogleTagManager gtmId={process.env.GTM || "GTM-M2LLQ24B"} />
     </head>
     <body>
@@ -161,9 +162,8 @@ export default async function RootLayout({children,}: Readonly<{
           warning: 'bg-warning-400 text-gray-900 border border-0',
         },
       }}
-    />
+     />
     </body>
-    <GoogleAnalytics gaId={process.env.G_ANALYTICS || "G-32WJY99VMZ"} />
     </html>
   );
 }
