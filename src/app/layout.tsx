@@ -132,11 +132,22 @@ export default async function RootLayout({children,}: Readonly<{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            
+            let consentFromStorage = 'denied';
+            try {
+              const storedConsent = localStorage.getItem('user-consent');
+              if (storedConsent === 'granted' || storedConsent === 'denied') {
+                consentFromStorage = storedConsent;
+              }
+            } catch (e) {
+              console.warn('Could not read consent from localStorage');
+            }
+            
             gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'analytics_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_personalization': 'denied',
+              'ad_storage': consentFromStorage,
+              'analytics_storage': consentFromStorage,
+              'ad_user_data': consentFromStorage,
+              'ad_personalization': consentFromStorage,
               'wait_for_update': 500
             });
           `,
