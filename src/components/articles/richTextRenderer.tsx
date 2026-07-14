@@ -50,10 +50,10 @@ const renderOptions: Options = {
       <h6 className="text-sm md:text-base font-semibold mt-3 mb-2">{children}</h6>
     ),
     [BLOCKS.UL_LIST]: (_node, children) => (
-      <ul className="list-disc list-inside mb-4 space-y-1 pl-2 marker:text-foreground-500">{children}</ul>
+      <ul className="list-disc mb-4 space-y-1 pl-6 marker:text-foreground-500">{children}</ul>
     ),
     [BLOCKS.OL_LIST]: (_node, children) => (
-      <ol className="list-decimal list-inside mb-4 space-y-1 pl-2 marker:text-foreground-500">{children}</ol>
+      <ol className="list-decimal mb-4 space-y-1 pl-6 marker:text-foreground-500">{children}</ol>
     ),
     [BLOCKS.LIST_ITEM]: (_node, children) => (
       <li className="leading-relaxed">{children}</li>
