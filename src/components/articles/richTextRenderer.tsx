@@ -5,19 +5,23 @@ import Image from 'next/image';
 const renderOptions: Options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const { file, title } = node.data.target.fields;
-      const url = file.url.startsWith('//') ? `https:${file.url}` : file.url;
-      const width = file.details.image?.width || 800;
-      const height = file.details.image?.height || 600;
+      const target = node.data.target?.fields;
+      if (!target?.file) return null;
+
+      const { file, title } = target;
+      const url = file.url?.startsWith('//') ? `https:${file.url}` : file.url;
+      if (!url) return null;
+
+      const width = file.details?.image?.width || 800;
+      const height = file.details?.image?.height || 600;
 
       return (
         <div className="my-6">
           <Image
             src={url}
-            alt={title || ''}
+            alt={title || 'Image'}
             width={width}
             height={height}
-            unoptimized
             className="rounded-xl object-cover w-full h-auto"
           />
         </div>
@@ -28,7 +32,7 @@ const renderOptions: Options = {
         .filter((c) => c.nodeType === 'text')
         .map((c) => ('value' in c ? c.value : ''))
         .join('');
-      if (text === '') return <br />;
+      if (text.trim() === '') return null;
       return <p className="mb-4 leading-relaxed">{children}</p>;
     },
     [BLOCKS.HEADING_1]: (_node, children) => (
@@ -78,7 +82,7 @@ const renderOptions: Options = {
       <td className="px-4 py-2">{children}</td>
     ),
     [BLOCKS.TABLE_HEADER_CELL]: (_node, children) => (
-      <th className="px-4 py-2 font-semibold text-left">{children}</th>
+      <th className="px-4 py-2 font-semibold text-left bg-default-100">{children}</th>
     ),
   },
   renderMark: {
