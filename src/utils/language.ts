@@ -54,6 +54,7 @@ interface Navbar {
     title: string;
     parts: string;
     realizations: string;
+    articles: string;
   }
 }
 
