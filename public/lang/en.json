@@ -9,6 +9,10 @@
     "realizations": {
       "title": "CarMitsu Service Projects",
       "description": "See selected Mitsubishi, Hyundai and Toyota repairs completed by CarMitsu. Check our workmanship and book your service appointment."
+    },
+    "articles": {
+      "title": "CarMitsu Service Articles",
+      "description": "Read the latest articles about car service and maintenance for Mitsubishi, Hyundai and Toyota."
     }
   },
   "navbar": {
