@@ -4,7 +4,7 @@ import { Document } from '@contentful/rich-text-types';
 
 export type { Article } from '@/types/article';
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyEntry = any;
