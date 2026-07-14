@@ -1,8 +1,11 @@
-import Navigation from "@/components/navbar";
-import Footer from "@/components/footer";
-import AllRealizations from "@/components/realizations/allRealizations";
-import {Metadata} from "next";
+import Navigation from '@/components/navbar';
+import Footer from '@/components/footer';
+import ArticlesList from '@/components/articles/articlesList';
+import { getArticles } from '@/utils/articles';
+import { Metadata } from 'next';
 import {getLanguage} from "@/utils/language";
+
+export const revalidate = 600;
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getLanguage();
@@ -30,11 +33,13 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Page() {
+export default async function ArticlesPage() {
+  const articles = await getArticles();
+
   return (
     <main>
       <Navigation />
-      <AllRealizations />
+      <ArticlesList articles={articles} />
       <Footer />
     </main>
   );
