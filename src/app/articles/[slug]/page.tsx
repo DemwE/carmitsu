@@ -5,7 +5,7 @@ import { getArticles, getArticleBySlug } from '@/utils/articles';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;

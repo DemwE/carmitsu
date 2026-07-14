@@ -5,7 +5,7 @@ import { getArticles } from '@/utils/articles';
 import { Metadata } from 'next';
 import {getLanguage} from "@/utils/language";
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getLanguage();

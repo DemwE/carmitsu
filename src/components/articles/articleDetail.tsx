@@ -8,7 +8,7 @@ interface ArticleDetailProps {
 
 export default function ArticleDetail({ article }: ArticleDetailProps) {
   return (
-    <section className="px-6 md:px-14 pb-3">
+    <section className="px-6 md:px-14 pb-3 my-2">
       <article className="max-w-4xl mx-auto space-y-6">
         <div className="space-y-2">
           <h1 className="max-md:text-2xl md:text-3xl lg:text-4xl">{article.title}</h1>
@@ -21,7 +21,6 @@ export default function ArticleDetail({ article }: ArticleDetailProps) {
 
         {article.images.length > 0 && (
           <div className="space-y-4 pt-4 border-t border-default-200">
-            <h2 className="text-xl md:text-2xl font-semibold">Galeria</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {article.images.map((asset, index) => (
                 <div key={index} className="relative rounded-xl overflow-hidden">
